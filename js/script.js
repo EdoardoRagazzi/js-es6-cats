@@ -34,8 +34,33 @@ const gatti = [
     },
 ];
 
+//*************MILESTONE-1****************/
 //---------------------FOREACH()----PRINT THE ARRAY WITH NAME AND COLORS------------------//
 gatti.forEach(function gatti(item) {
     console.log(item.nome, item.colore);
     document.getElementById('page').innerHTML += `${item.nome} è di colore  ${item.colore} </br>`;
 });
+//----------FUNCTION WITH ARROW----------//
+gatti.forEach((item) => { document.getElementById('page').innerHTML += `${item.nome} è di colore  ${item.colore} </br>` });
+
+//*************MILESTONE-2****************/
+
+var male = [];
+var female = [];
+
+for (i = 0; i < gatti.length; i++) {
+    if (gatti[i].gender == 'female') {
+        female.push(gatti[i]);
+        const { nome, gender } = gatti[i];
+        document.getElementById('female').innerHTML += `${nome} è : ${gender}  </br>`;
+
+    } else {
+        male.push(gatti[i]);
+        const { nome, gender } = gatti[i];
+        document.getElementById('male').innerHTML += `${nome} è :  ${gender}  </br>`;
+    }
+}
+console.log(male);
+console.log(female);
+
+
