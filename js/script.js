@@ -11,25 +11,25 @@ const gatti = [
     {
         nome: 'Nelson',
         eta: 3,
-        colore: 'yellow',
+        colore: '#BE4BDB',
         gender: 'male'
     },
     {
         nome: 'Mandela',
         eta: 4,
-        colore: 'red',
+        colore: '#FEEEEE',
         gender: 'female'
     },
     {
         nome: 'Perry',
         eta: 5,
-        colore: 'black',
+        colore: '#FFFFF',
         gender: 'male'
     },
     {
         nome: 'Calligola',
         eta: 1,
-        colore: 'brown',
+        colore: '#F75C1E',
         gender: 'female'
     },
 ];
@@ -38,10 +38,10 @@ const gatti = [
 //---------------------FOREACH()----PRINT THE ARRAY WITH NAME AND COLORS------------------//
 gatti.forEach(function gatti(item) {
     console.log(item.nome, item.colore);
-    document.getElementById('page').innerHTML += `${item.nome} è di colore  ${item.colore} </br>`;
+    document.getElementById('page').innerHTML += `${item.nome} è di colore <i class="fas fa-cat" style="color: ${item.colore}"></i> </br>`;
 });
 //----------FUNCTION WITH ARROW----------//
-gatti.forEach((item) => { document.getElementById('page').innerHTML += `${item.nome} è di colore  ${item.colore} </br>` });
+gatti.forEach((item) => { document.getElementById('page').innerHTML += `${item.nome} è di colore <i class="fas fa-cat" style="color: ${item.colore}"> ` });
 
 //*************MILESTONE-2****************/
 
@@ -52,12 +52,12 @@ for (i = 0; i < gatti.length; i++) {
     if (gatti[i].gender == 'female') {
         female.push(gatti[i]);
         const { nome, gender } = gatti[i];
-        document.getElementById('female').innerHTML += `${nome} è : ${gender}  </br>`;
+        document.getElementById('female').innerHTML += `${nome} è : ${gender} <i class="fas fa-cat" style="color: pink"></i> </br> `;
 
     } else {
         male.push(gatti[i]);
         const { nome, gender } = gatti[i];
-        document.getElementById('male').innerHTML += `${nome} è :  ${gender}  </br>`;
+        document.getElementById('male').innerHTML += `${nome} è: ${gender} <i class="fas fa-cat" style="color: blue"></i> </br > `;
     }
 }
 console.log(male);
