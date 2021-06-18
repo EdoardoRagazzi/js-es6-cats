@@ -44,23 +44,87 @@ gatti.forEach(function gatti(item) {
 gatti.forEach((item) => { document.getElementById('page').innerHTML += `${item.nome} è di colore <i class="fas fa-cat" style="color: ${item.colore}"> ` });
 
 //*************MILESTONE-2****************/
+//-----------WITH CICLO FOR----------------------//
+// var male = [];
+// var female = [];
 
-var male = [];
-var female = [];
+// for (i = 0; i < gatti.length; i++) {
+//     if (gatti[i].gender == 'female') {
+//         female.push(gatti[i]);
+//         const { nome, gender } = gatti[i];
+//         document.getElementById('female').innerHTML += `${nome} è : ${gender} <i class="fas fa-cat" style="color: pink"></i> </br> `;
 
-for (i = 0; i < gatti.length; i++) {
-    if (gatti[i].gender == 'female') {
-        female.push(gatti[i]);
-        const { nome, gender } = gatti[i];
-        document.getElementById('female').innerHTML += `${nome} è : ${gender} <i class="fas fa-cat" style="color: pink"></i> </br> `;
+//     } else {
+//         male.push(gatti[i]);
+//         const { nome, gender } = gatti[i];
+//         document.getElementById('male').innerHTML += `${nome} è: ${gender} <i class="fas fa-cat" style="color: blue"></i> </br > `;
+//     }
+// }
+// console.log(male);
+// console.log(female);
+//--------------------MILESTONE 3--------------------------//
+const pink = "#E7120F";
+const blue = "#211CBB";
 
-    } else {
-        male.push(gatti[i]);
-        const { nome, gender } = gatti[i];
-        document.getElementById('male').innerHTML += `${nome} è: ${gender} <i class="fas fa-cat" style="color: blue"></i> </br > `;
+const newCats = cats.map((element) => {
+    const { name, age, color, gender } = element;
+    const opacity = element.age / 9;
+
+    return {
+        name,
+        age,
+        color,
+        gender,
+        ribbon: {
+            color: (gender == "female") ? pink : blue,
+            opacity: opacity
+        }
     }
+});
+
+const printCatsRibbon = (array) => {
+    array.forEach((element) => {
+        document.getElementById("container").innerHTML += `<br/><br/>
+            ${element.name} : <i class="fas fa-cat" style="color:${element.color}"></i> 
+            <i class="fas fa-ribbon" style="color:${element.ribbon.color}; opacity:${element.ribbon.opacity}"></i>,
+        
+        `;
+    });
 }
-console.log(male);
-console.log(female);
+//-----------DUE CONTENITORI DISTINTI---------//
+const maleCats = newCats.filter((element) => {
+    return element.gender === "male";
+});
+document.getElementById("container").innerHTML += "<br/><br/>Maschi";
+printCatsRibbon(maleCats);
+
+
+const femaleCats = newCats.filter((element) => {
+    return element.gender === "female";
+});
+document.getElementById("container").innerHTML += "<br/><br/>Femmine";
+printCatsRibbon(femaleCats);
+
+
+document.getElementById("container").innerHTML += "<br/><br/>Milestone 3";
+
+let catsFemaleMale = [...femaleCats, ...maleCats];
+
+const catsFemaleMaleZip = catsFemaleMale.map((element) => {
+    const { name, color, ribbon } = element;
+
+    return {
+        name,
+        color,
+        ribbon
+    }
+});
+
+printCatsRibbon(catsFemaleMaleZip);
+
+
+
+
+
 
 
